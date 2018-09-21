@@ -10,6 +10,15 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     return render(request, 'BasicApp/index.html')
 
+@login_required
+def special(request):
+    return HttpResponse("You are logged in, nice!")
+
+@login_required
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('index'))
+
 def register(request):
 
     registered = False
